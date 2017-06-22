@@ -1,0 +1,56 @@
+{
+  "name": "fitness-timer",
+  "version": "0.1.0",
+  "description": "It's just a simple fitness timer!",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuroikyu/fitness-timer.git"
+  },
+  "keywords": [
+    "finess",
+    "timer",
+    "react",
+    "javascript"
+  ],
+  "author": "@kuroikyu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kuroikyu/fitness-timer/issues"
+  },
+  "homepage": "https://github.com/kuroikyu/fitness-timer#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
+    "query-string": "^4.3.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1",
+    "html-webpack-plugin": "^2.28.0",
+    "style-loader": "^0.16.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  }
+}
