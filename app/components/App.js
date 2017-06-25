@@ -80,7 +80,7 @@ export default class App extends React.Component {
       const attributes = {
         time: amount,
         key: prevState.timersCount,
-        timerKey: prevState.timersCount.toString,
+        timerKey: prevState.timersCount.toString(),
         onClose: this.handleClose,
       };
 
