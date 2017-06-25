@@ -13,6 +13,7 @@ export default class App extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   handleSubmit(name, amount) {
@@ -21,6 +22,8 @@ export default class App extends React.Component {
       const attributes = {
         time: amount,
         key: prevState.timersCount,
+        timerKey: prevState.timersCount.toString,
+        onClose: this.handleClose,
       };
 
       if (name) {
@@ -36,6 +39,13 @@ export default class App extends React.Component {
         timersCount: prevState.timersCount + 1,
       };
     });
+  }
+
+  handleClose(keyOut) {
+    const currentTimers = this.state.timers;
+    const newTimersArray = currentTimers.filter(timer => timer.props.timerKey !== keyOut);
+
+    this.setState({ timers: newTimersArray });
   }
 
   render() {

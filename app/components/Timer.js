@@ -9,6 +9,8 @@ const style = {
 const propTypes = {
   time: PropTypes.number.isRequired,
   label: PropTypes.string,
+  timerKey: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -20,10 +22,14 @@ class Timer extends React.Component {
     super(props);
 
     this.state = {
+      startingTime: props.time,
       time: props.time,
       label: props.label,
       divStyle: null,
     };
+
+    this.getTimerPercent = this.getTimerPercent.bind(this);
+    this.deleteTimer = this.deleteTimer.bind(this);
   }
 
   componentDidMount() {
@@ -37,7 +43,14 @@ class Timer extends React.Component {
   }
 
   componentWillUnmount() {
-    window.clearInterval(this.timerInterval);
+    this.deleteTimer();
+  }
+
+  deleteTimer() {
+    if (this.timerInterval) {
+      window.clearInterval(this.timerInterval);
+    }
+    this.props.onClose(this.props.timerKey);
   }
 
   render() {
@@ -52,6 +65,14 @@ class Timer extends React.Component {
 
     return (
       <div style={divStyle} className="timer-container">
+        <span
+          role="button"
+          tabIndex={0}
+          className="close"
+          onClick={this.deleteTimer}
+        >
+          x
+        </span>
         <p className="timer">{formattedTime}</p>
         <p className="timer-label">{label}</p>
       </div>
