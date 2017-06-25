@@ -43,6 +43,20 @@ class Timer extends React.Component {
     this.deleteTimer();
   }
 
+  getTimerPercent() {
+    const {
+      startingTime,
+      time,
+    } = this.state;
+    if (startingTime === 0) {
+      return 100;
+    }
+    const percent = (startingTime - time) / startingTime || 0;
+    const parsedPercent = parseInt(percent * 100, 10);
+
+    return parsedPercent;
+  }
+
   deleteTimer() {
     if (this.timerInterval) {
       window.clearInterval(this.timerInterval);
