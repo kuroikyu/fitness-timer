@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'moment';
 
-const style = {
-  color: 'red',
-};
-
 const propTypes = {
   time: PropTypes.number.isRequired,
   label: PropTypes.string,
@@ -25,7 +21,7 @@ class Timer extends React.Component {
       startingTime: props.time,
       time: props.time,
       label: props.label,
-      divStyle: null,
+      classIsFinished: null,
     };
 
     this.getTimerPercent = this.getTimerPercent.bind(this);
@@ -37,7 +33,8 @@ class Timer extends React.Component {
       if (this.state.time > 0) {
         this.setState(prevState => ({ time: prevState.time - 1 }));
       } else {
-        this.setState(prevState => ({ divStyle: prevState.divStyle ? null : style }));
+        this.setState({ classIsFinished: 'timer-finished' });
+        window.clearInterval(this.timerInterval);
       }
     }, 1000);
   }
@@ -57,14 +54,14 @@ class Timer extends React.Component {
     const {
       label,
       time,
-      divStyle,
+      classIsFinished,
     } = this.state;
 
     const momentTime = Moment(0).add(time, 's');
     const formattedTime = momentTime.format('HH:mm:ss');
 
     return (
-      <div style={divStyle} className="timer-container">
+      <div className={`timer-container ${classIsFinished}`}>
         <span
           role="button"
           tabIndex={0}
@@ -74,7 +71,10 @@ class Timer extends React.Component {
           x
         </span>
         <p className="timer">{formattedTime}</p>
-        <p className="timer-label">{label}</p>
+        <p className="timer-label">
+          <span>{this.getTimerPercent()}% </span>
+          {label}
+        </p>
       </div>
     );
   }
