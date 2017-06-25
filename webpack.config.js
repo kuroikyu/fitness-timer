@@ -7,7 +7,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.bundle.js',
-    publicPath: '/',
+    // publicPath: '/',
   },
   module: {
     rules: [
@@ -17,6 +17,8 @@ const config = {
   },
   devServer: {
     historyApiFallback: true,
+    host: '0.0.0.0',
+    disableHostCheck: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
