@@ -34,7 +34,7 @@ export default class App extends React.Component {
       />,
       <Timer
         time={5000}
-        label="This is a way even longer label, you can't even begin to imagine how long this label is!"
+        label="This is a way even longer label, you can't even! Here, have a 💩."
         key="c3"
         timerKey="2"
         onClose={this.handleClose}
