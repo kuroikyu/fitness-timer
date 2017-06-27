@@ -12,7 +12,18 @@ const config = {
   module: {
     rules: [
       { test: /\.jsx?$/, use: 'babel-loader' },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1 },
+          },
+          { loader: 'postcss-loader' },
+        ],
+      },
     ],
   },
   devServer: {
